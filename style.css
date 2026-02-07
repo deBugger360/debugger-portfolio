@@ -422,14 +422,70 @@ main {
 /* ----- Navigation -----*/
 /* --------------------------------- */
 
+/* Mobile Nav Container */
 .nav {
   min-block-size: 100vh;
   position: fixed;
   width: 100%;
-  background-color: #ff5e99;
-  background-image: var(--gradient-brand);
+  background-color: var(--bg-color-primary);
+  background-image: none;
   transition: 450ms var(--easing);
   z-index: 3;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+  .menu-btn-container {
+    display: none !important;
+  }
+  
+  .nav {
+    min-block-size: auto;
+    background: transparent;
+    background-image: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    transform: none;
+    visibility: visible;
+    display: flex;
+    justify-content: flex-end;
+    padding: 2rem 5%;
+  }
+
+  .nav.hidden {
+    transform: none;
+    visibility: visible;
+  }
+
+  .nav-items {
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-item:not(:last-child) {
+    margin-block-end: 0;
+  }
+
+  .nav-item a {
+    font-size: 1rem;
+    color: var(--important);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .theme-toggle-item {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border);
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 .nav-items {
@@ -492,9 +548,18 @@ body.light .header {
 
 .header-textbox {
   position: absolute;
-  top: 40%; /* Moved up from 50% to reduce empty space above */
-  transform: translateY(-40%);
+  top: 30%;
+  transform: translateY(-50%);
 }
+
+@media (max-width: 768px) {
+  .header-textbox {
+    padding-inline: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 
 .h1 span {
   display: block;
@@ -1776,5 +1841,125 @@ section {
 @keyframes shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+
+/* --------------------------------- */
+/* ----- Menu Refactor -----*/
+/* --------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Base Nav (Mobile by default) - Overlay style */
+.nav {
+  /* Keep existing mobile overlay styles */
+}
+
+/* Desktop Navigation (>= 768px) */
+@media (min-width: 768px) {
+  /* Hide the toggle button */
+  .menu-btn-container {
+    display: none;
+  }
+
+  /* Reset Nav Container */
+  .nav {
+    position: absolute; /* Place over hero background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-block-size: auto; /* Remove full height */
+    background: transparent; /* Remove solid background */
+    background-image: none; /* Remove gradient */
+    padding: var(--gutter-medium) var(--gutter-large);
+    z-index: 10;
+    transform: none !important; /* Override .hidden */
+    visibility: visible !important; /* Override .hidden */
+    display: flex;
+    justify-content: flex-end; /* Align right */
+  }
+
+  /* Reset Nav Items List */
+  .nav-items {
+    position: static; /* Remove absolute centering */
+    transform: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gutter-medium);
+  }
+
+  .nav-item:not(:last-child) {
+    margin-block-end: 0; /* Remove vertical spacing */
+  }
+
+  /* Link Styling */
+  .nav-item a {
+    font-size: 1.1rem; /* Smaller font for desktop menu */
+    font-weight: 500;
+    color: var(--important); /* Use theme text color */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Theme Toggle Item Alignment */
+  .theme-toggle-item {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Gradient Text Removal */
+.gradient-text {
+  background: none !important;
+  -webkit-text-fill-color: var(--important) !important;
+  color: var(--important) !important;
+  font-family: monospace; /* Typewriter font style */
+}
+
+
+/* --------------------------------- */
+/* ----- Menu Item Container Fix -----*/
+/* --------------------------------- */
+/* Fix for nav-items being absolute on mobile but static on desktop */
+@media (min-width: 768px) {
+  .nav-items {
+    top: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+  }
+}
+@media (max-width: 767px) {
+  .nav {
+    display: block; /* ensure block on mobile so hidden works */
+  }
+  .nav.hidden {
+    transform: translateX(-100%);
+    visibility: hidden;
+  }
+  .nav-items {
+    padding-top: 5rem;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    padding-left: 1.5rem;
+  }
+  .nav-item {
+    margin-bottom: 1.25rem;
+  }
 }
 
