@@ -721,19 +721,19 @@ body.dark .work-links img {
 }
 
 .work-textbox h3,
-.work-text,
-.work-technologies,
+.impact-statement,
+.work-tags,
 .work-links {
   --delay: 0.2s;
   animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-play-state: paused;
 }
 
-.work-text {
+.impact-statement {
   animation-delay: var(--delay);
 }
 
-.work-technologies {
+.work-tags {
   animation-delay: calc(var(--delay) * 1.5);
 }
 
@@ -1253,3 +1253,136 @@ input:checked {
   --thumb-position: 100%;
   background-color: var(--track-active);
 }
+
+/* --------------------------------- */
+/* ----- Agent Updates -----*/
+/* --------------------------------- */
+
+/* Hero Updates */
+.gradient-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  display: block; /* Ensure it takes full width if needed or inline-block */
+}
+
+.micro-line {
+  display: block;
+  font-size: var(--text-small);
+  color: var(--sub);
+  margin-block-start: var(--gutter-small); /* Below buttons */
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Portfolio Card Updates */
+/* Updating work-box to look like a card */
+.work-box {
+  background-color: var(--bg-color-secondary);
+  padding: var(--gutter-medium);
+  border-radius: var(--gutter-small);
+  transition: transform 0.3s var(--easing), box-shadow 0.3s var(--easing);
+  border: 1px solid var(--border);
+  /* Ensure flex layout persists as per original or adjusted */
+}
+
+.work-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
+}
+
+.impact-statement {
+  display: block;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--sub);
+  margin-block-end: var(--gutter-nano);
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block-end: var(--gutter-small);
+}
+
+.tag {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background-color: var(--bg-color-primary);
+  color: var(--body);
+  border: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.btn-primary-small {
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--important);
+  color: var(--bg-color-primary);
+  border-radius: var(--gutter-nano);
+  text-decoration: none;
+  transition: 0.3s all ease-in-out;
+  display: inline-block;
+}
+
+body.dark .btn-primary-small:hover {
+    box-shadow: #ffffff40 0 0 0 4px;
+}
+body.light .btn-primary-small:hover {
+    box-shadow: #07070733 0 0 0 4px;
+}
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+.icon-link:hover {
+  background-color: var(--border-dark);
+}
+
+.icon-link img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* CTA Banner */
+.cta-banner {
+  text-align: center;
+  padding-block: var(--gutter-huge);
+  background-color: var(--bg-color-secondary);
+  border-top: 1px solid var(--border);
+  margin-block-start: var(--gutter-huge);
+  border-radius: var(--radius); /* Matching main border radius style */
+  margin-inline: var(--gutter-small); /* To mimic container or main style */
+}
+
+.cta-banner h2 {
+  font-size: var(--h2);
+  margin-block-end: var(--gutter-medium);
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+/* Performance / Skeleton */
+.img-skeleton {
+    background-color: var(--border-dark);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+

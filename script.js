@@ -112,3 +112,14 @@ logosWrappers.forEach(async (logoWrapper, i) => {
 });
 
 yearEl.textContent = new Date().getFullYear();
+
+// Skeleton loading removal
+document.querySelectorAll('img.img-skeleton').forEach(img => {
+  if (img.complete) {
+    img.classList.remove('img-skeleton');
+  } else {
+    img.addEventListener('load', () => {
+      img.classList.remove('img-skeleton');
+    });
+  }
+});
