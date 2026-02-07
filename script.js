@@ -157,3 +157,23 @@ const handleScrollAnimation = () => {
 window.addEventListener("scroll", () => {
   handleScrollAnimation();
 });
+
+/* --------------------------------- */
+/* ----- Typewriter Effect -----*/
+/* --------------------------------- */
+const typewriterText = "Scalable Digital Systems";
+const typewriterElement = document.querySelector('.gradient-text');
+
+if (typewriterElement) {
+  typewriterElement.textContent = '';
+  let i = 0;
+  function typeWriter() {
+    if (i < typewriterText.length) {
+      typewriterElement.textContent += typewriterText.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
+    }
+  }
+  // Start after initial fade-in animations
+  setTimeout(typeWriter, 1000);
+}

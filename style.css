@@ -492,8 +492,8 @@ body.light .header {
 
 .header-textbox {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 40%; /* Moved up from 50% to reduce empty space above */
+  transform: translateY(-40%);
 }
 
 .h1 span {
@@ -639,14 +639,15 @@ body.light .logo {
 }
 
 .work-box:not(:last-child) {
-  margin-block-end: var(--gutter-huge);
+  margin-block-end: var(--gutter-medium); /* Reduced to 2.5rem */
 }
 
 @media (max-width: 1285px) {
   .work-box:not(:last-child) {
-    margin-block-end: 8rem;
+    margin-block-end: 3rem; /* Tighter on smaller screens */
   }
 }
+
 
 .work-img,
 .work-textbox {
@@ -1403,12 +1404,31 @@ body.light .btn-primary-small:hover {
 }
 
 .gradient-text {
-  font-size: 1.2em; /* Make "Scalable Digital Systems" larger */
-  background: linear-gradient(90deg, #ff838b, #73ffe1);
+  font-size: 1.2em;
+  background: linear-gradient(90deg, #FA709A 0%, #FEE140 100%); /* Stronger contrast gradient */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   display: inline-block;
+  position: relative;
+}
+
+/* Typewriter Cursor */
+.gradient-text::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  color: var(--important); 
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+body.dark .gradient-text {
+    background: linear-gradient(90deg, #ff838b, #73ffe1);
 }
 
 /* Hero Background Animation */
@@ -1537,12 +1557,20 @@ body.light .btn-primary-small:hover {
   border-bottom: 1px solid var(--border);
 }
 
+/* My Approach Section */
+.approach .h2 {
+  text-align: right;
+  margin-bottom: var(--gutter-medium);
+}
+
 .approach-intro {
   max-width: 700px;
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--sub);
   margin-bottom: var(--gutter-large);
+  margin-left: auto; /* Align intro text right as well */
+  text-align: right;
 }
 
 .process-flow {
@@ -1577,7 +1605,8 @@ body.light .btn-primary-small:hover {
   font-size: 2rem;
   color: var(--sub);
   opacity: 0.3;
-  padding-top: 1.5rem;
+  align-self: center; /* Center arrow vertically with steps */
+  margin-top: -2rem; /* subtle nudge up to align with numbers */
 }
 
 @media (max-width: 768px) {
@@ -1681,8 +1710,8 @@ html {
   scroll-behavior: smooth;
 }
 
-.section {
-  padding-block: var(--gutter-huge);
+.section, section {
+  padding-block: var(--gutter-x-large); /* Harmonized shorter vertical spacing */
 }
 
 /* Fade in on scroll class (JS to toggle opacity) */
