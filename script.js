@@ -123,3 +123,37 @@ document.querySelectorAll('img.img-skeleton').forEach(img => {
     });
   }
 });
+
+/* --------------------------------- */
+/* ----- Scroll Animations --------*/
+/* --------------------------------- */
+
+const scrollElements = document.querySelectorAll(".fade-in-scroll");
+
+const elementInView = (el, dividend = 1) => {
+  const elementTop = el.getBoundingClientRect().top;
+  return (
+    elementTop <=
+    (window.innerHeight || document.documentElement.clientHeight) / dividend
+  );
+};
+
+const displayScrollElement = (element) => {
+  element.classList.add("is-visible");
+};
+
+const hideScrollElement = (element) => {
+  element.classList.remove("is-visible");
+};
+
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+    if (elementInView(el, 1.25)) {
+      displayScrollElement(el);
+    }
+  });
+};
+
+window.addEventListener("scroll", () => {
+  handleScrollAnimation();
+});

@@ -1386,3 +1386,366 @@ body.light .btn-primary-small:hover {
   50% { opacity: .5; }
 }
 
+
+/* --------------------------------- */
+/* ----- Storytelling Updates -----*/
+/* --------------------------------- */
+
+/* Hero Advanced Styling */
+.header h1 span:first-child {
+  display: block;
+  font-size: 0.5em; /* Smaller "Engineered For Impact" */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  color: var(--sub);
+  font-weight: 700;
+}
+
+.gradient-text {
+  font-size: 1.2em; /* Make "Scalable Digital Systems" larger */
+  background: linear-gradient(90deg, #ff838b, #73ffe1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Hero Background Animation */
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(115, 255, 225, 0.05) 0%, transparent 60%);
+  animation: pulse-bg 10s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes pulse-bg {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Fade In Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+.fade-in-delay-1 { animation-delay: 0.2s; }
+.fade-in-delay-2 { animation-delay: 0.4s; }
+.fade-in-delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Value Proposition Section */
+.value-prop {
+  padding-block: var(--gutter-x-large);
+  border-bottom: 1px solid var(--border);
+}
+
+.vp-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter-medium);
+  margin-top: var(--gutter-large);
+}
+
+.vp-card {
+  background: var(--bg-color-secondary);
+  padding: var(--gutter-medium);
+  border-radius: var(--gutter-small);
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
+}
+
+.vp-icon {
+  color: var(--important); /* Use theme color */
+  margin-bottom: var(--gutter-small);
+}
+
+.vp-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+@media (max-width: 900px) {
+  .vp-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Work Card Enhancements */
+.work-outcome {
+  font-size: 0.9rem;
+  color: #73ffe1; /* Highlight color */
+  margin-bottom: var(--gutter-small);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.work-outcome::before {
+  content: "→";
+}
+
+/* Philosophy Section */
+.philosophy {
+  padding-block: var(--gutter-huge);
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg-color-primary) 0%, var(--bg-color-secondary) 100%);
+}
+
+.philosophy-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.philosophy .h3 {
+  font-size: 2.5rem;
+  margin-bottom: var(--gutter-medium);
+  line-height: 1.3;
+}
+
+.philosophy-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--sub);
+}
+
+
+/* --------------------------------- */
+/* ----- Engineering Polish -------*/
+/* --------------------------------- */
+
+/* Approach Section */
+.approach {
+  background-color: var(--bg-color-secondary);
+  padding-block: var(--gutter-large);
+  border-bottom: 1px solid var(--border);
+}
+
+.approach-intro {
+  max-width: 700px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--sub);
+  margin-bottom: var(--gutter-large);
+}
+
+.process-flow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gutter-medium);
+  overflow-x: auto;
+  padding-bottom: var(--gutter-small);
+}
+
+.process-step {
+  flex: 1;
+  min-width: 200px;
+}
+
+.step-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--border-dark);
+  line-height: 1;
+  margin-bottom: var(--gutter-nano);
+}
+
+.process-step .h4 {
+  color: var(--important);
+  margin-bottom: var(--gutter-nano);
+}
+
+.process-arrow {
+  font-size: 2rem;
+  color: var(--sub);
+  opacity: 0.3;
+  padding-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .process-flow {
+    flex-direction: column;
+    gap: var(--gutter-large);
+  }
+  .process-arrow {
+    transform: rotate(90deg);
+    align-self: center;
+    padding: 0;
+  }
+}
+
+/* Engineering Stack Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gutter-large);
+  margin-top: var(--gutter-medium);
+}
+
+.skill-category {
+  background: var(--bg-color-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--gutter-medium);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.skill-category:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-dark);
+}
+
+.skill-category h3 {
+  margin-bottom: var(--gutter-medium);
+  font-size: 1.1rem;
+  color: var(--important);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-tag {
+  background: var(--bg-color-secondary);
+  color: var(--sub);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+  background: var(--important);
+  color: var(--bg-color-primary);
+  transform: translateY(-1px);
+}
+
+/* Premium CTA Banner */
+.premium-cta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 6rem 1rem;
+  background: linear-gradient(135deg, var(--bg-color-secondary) 0%, var(--bg-color-primary) 100%);
+  border-top: 1px solid var(--border);
+}
+
+.premium-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(115, 255, 225, 0.03) 0%, transparent 50%);
+  animation: pulse-bg 15s infinite linear;
+  pointer-events: none;
+}
+
+.cta-subtitle {
+  font-size: 1.25rem;
+  color: var(--sub);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* Global Polish */
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  padding-block: var(--gutter-huge);
+}
+
+/* Fade in on scroll class (JS to toggle opacity) */
+.fade-in-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* --------------------------------- */
+/* ----- Global Visual Polish -----*/
+/* --------------------------------- */
+
+/* Consistent Border Radius */
+.work-box, .vp-card, .skill-category, .article-box, .cta-banner {
+  border-radius: 1.5rem; /* ~24px for a modern, friendly feel */
+}
+
+/* Soft Layered Shadows */
+.work-box:hover, .vp-card:hover, .skill-category:hover, .article-box:hover {
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1); /* Deeper shadow on hover */
+}
+
+/* Subtle Hover Effects */
+a, button, .btn {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Improved Vertical Rhythm */
+section {
+  padding-block: var(--gutter-huge);
+}
+
+/* Sticky Navbar with Blur */
+.header .menu-btn-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(var(--bg-color-primary-rgb), 0.8); /* Requires RGB var or fallback */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-block: 1rem;
+}
+
+/* Skeleton Loading Polish */
+.img-skeleton {
+  background: linear-gradient(90deg, var(--bg-color-secondary) 25%, var(--border) 50%, var(--bg-color-secondary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
