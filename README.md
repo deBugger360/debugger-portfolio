@@ -8,7 +8,7 @@ A high-performance, accessible, and offline-first portfolio designed to showcase
 
 This portfolio has been re-engineered to move beyond a standard "web developer" showcase into a **Systems Engineer** positioning. It emphasizes architectural rigor, performance optimization, and scalable design patterns.
 
-**Live URL:** [https://ossportfolio.netlify.app](https://ossportfolio.netlify.app)
+**Live URL:** [https://debugger-portfolio.vercel.app/](https://debugger-portfolio.vercel.app/)
 
 ## ✨ Key Features & Engineering
 
