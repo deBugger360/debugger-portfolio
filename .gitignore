@@ -3,3 +3,5 @@
 *.md
 !README.md
 !LICENSE.md
+remove_bg_and_convert.py
+fix_ekha_and_overflow.py

@@ -83,6 +83,14 @@ html {
   font-family: "Mona Sans", sans-serif;
   box-sizing: border-box;
   scroll-padding-top: var(--scroll-padding);
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
 }
 
 @media (max-width: 1200px) {
@@ -136,6 +144,14 @@ h2,
 h3,
 .h4 {
   overflow-wrap: break-word;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 h1,
@@ -609,69 +625,87 @@ body.light .header {
 .logos {
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
-  padding-block-start: var(--gutter-x-large);
-}
-
-@media (max-width: 885px) {
-  .logos {
-    padding-block-start: calc(
-      var(--gutter-x-large) + var(--gutter-x-large) - 2rem
-    );
-  }
-}
-
-.logo-group {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
+  padding-block-start: var(--gutter-x-large);
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  gap: 2rem;
 }
 
+
+/* --------------------------------- */
+/* ----- Logo Visibility & Scaling -----*/
+/* --------------------------------- */
+
+/* Base Logo Style */
 .logo {
-  position: absolute;
-  top: 0;
-  max-block-size: 60px;
-  max-inline-size: 150px;
-  transition: all 2.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: block;
+  max-block-size: 70px; /* Slightly taller to accommodate EKHA */
+  max-inline-size: 160px;
+  height: auto;
+  width: auto;
+  transition: all 0.3s ease;
+  /* Default (Light Mode): Grayscale for uniformity */
+  filter: grayscale(100%) opacity(0.7); 
 }
 
-@media (max-width: 845px) {
-  .logo {
-    max-inline-size: 100px;
-  }
-
-  .logo-group:last-child {
-    display: none;
-  }
+.logo:hover {
+  filter: grayscale(0%) brightness(1) opacity(1);
+  transform: scale(1.05);
 }
 
-@media (max-width: 400px) {
-  .logo {
-    max-inline-size: 85px;
-  }
+/* Specific Logo Sizing */
+.logo[src*="ekiti"] {
+  max-inline-size: 220px; /* Significantly larger */
+  max-block-size: 90px;
+}
+.logo[src*="kinplus"] {
+  max-inline-size: 140px;
 }
 
-.logo.hide {
-  opacity: 0;
+/* 
+  REVERSED LOGOS (e.g. Debug Lab - White Text)
+  In Light Mode: Must invert to become Black.
+*/
+.logo.reversed-logo {
+  filter: invert(1) grayscale(100%) opacity(0.8);
+}
+.logo.reversed-logo:hover {
+   /* Invert to black on hover */
+  filter: invert(1) opacity(1);
 }
 
-.logo.to-top {
-  transform: scale(0.4) translateY(-150px);
-}
-
-.logo.to-bottom {
-  transform: scale(0.4) translateY(150px);
-}
-
+/* 
+  DARK MODE 
+*/
 body.dark .logo {
-  filter: invert(97%) grayscale(100%) opacity(0.6);
+  /* Invert black logos to white */
+  filter: invert(1) grayscale(100%) opacity(0.8);
+}
+body.dark .logo:hover {
+  filter: invert(1) grayscale(0%) opacity(1);
 }
 
-body.light .logo {
-  filter: grayscale(100%) opacity(0.6);
+/* 
+  REVERSED LOGOS IN DARK MODE
+  Since they are white, we do NOT invert them. 
+*/
+body.dark .logo.reversed-logo {
+  filter: grayscale(100%) opacity(0.9);
 }
+body.dark .logo.reversed-logo:hover {
+  filter: grayscale(0%) opacity(1);
+}
+
+/* 
+  SOFTICU Handling
+  Light mode: inherently black, so standard rules work.
+  Dark mode: standard inversion works.
+*/
+.logo[src*="softicu"] {
+  /* No special overrides needed */
+}
+
+/* Cleaned up duplicate blocks */
 
 /* --------------------------------- */
 /* ----- Work -----*/
