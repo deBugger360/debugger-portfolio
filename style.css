@@ -654,9 +654,30 @@ body.light .header {
 }
 
 /* Specific Logo Sizing */
-.logo[src*="ekiti"] {
+/* Specific Logo Sizing & Overrides */
+.logo[src*="ekiti"], 
+.logo[src*="ekhoa"] {
   max-inline-size: 220px; /* Significantly larger */
   max-block-size: 90px;
+}
+
+/* 
+  Override reversed-logo behavior for EKHOA if needed 
+  (User requested "leave as is on light mode")
+*/
+.logo.reversed-logo[src*="ekhoa"] {
+  filter: grayscale(100%) opacity(0.7); /* Cancel invert */
+}
+.logo.reversed-logo[src*="ekhoa"]:hover {
+  filter: grayscale(0%) opacity(1);
+}
+
+body.dark .logo.reversed-logo[src*="ekhoa"] {
+  /* Invert to white in dark mode */
+  filter: invert(1) grayscale(100%) opacity(0.8) brightness(1.5); 
+}
+body.dark .logo.reversed-logo[src*="ekhoa"]:hover {
+  filter: invert(1) grayscale(0%) opacity(1) brightness(1.5);
 }
 .logo[src*="kinplus"] {
   max-inline-size: 140px;
