@@ -241,7 +241,13 @@ h3,
 
 @media (max-width: 575px) {
   .container {
-    padding-inline: var(--gutter-small);
+    padding-inline: var(--gutter-x-small);
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding-inline: var(--gutter-micro); /* 1rem padding for very small screens */
   }
 }
 
@@ -964,6 +970,19 @@ body.dark .work-links img {
   .featured-article {
     margin-block-end: 24.4px;
     flex-direction: column-reverse;
+    gap: var(--gutter-small); /* Add spacing between image and text */
+  }
+  
+  .featured-article .article-textbox,
+  .featured-article .article-illustration {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Reset alignment since it's now column */
+  .featured-article {
+    align-items: stretch; 
   }
 }
 
