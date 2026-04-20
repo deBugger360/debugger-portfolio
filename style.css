@@ -560,7 +560,7 @@ main {
 
 body.dark .header {
   background-image: linear-gradient(#0000008b, #000000e6),
-    url("assets/images/herobg.webp");
+    url("assets/images/hero-bg.webp");
 }
 
 body.light .header {
