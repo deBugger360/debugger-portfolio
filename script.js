@@ -231,3 +231,58 @@ function handleMenuResize() {
 window.addEventListener('resize', handleMenuResize);
 // Run once on load to set initial state correctly
 handleMenuResize();
+
+/* --------------------------------- */
+/* ----- Now Playing Widget -----*/
+/* --------------------------------- */
+// ✏️  Your "Best of CHH 2026" playlist — add/remove songs here as your taste evolves.
+// videoId comes from the YouTube URL: youtube.com/watch?v=<videoId>
+const nowPlayingPlaylist = [
+  { title: "THE BEST",                     artist: "Aha Gazelle",    videoId: "5Tc9v1HpALs" },
+  { title: "Planet Namek",                 artist: "Aha Gazelle",    videoId: "LP3hQWlY93Y" },
+  { title: "Oh Well",                      artist: "Aha Gazelle",    videoId: "fx5YUGufq-E" },
+  { title: "Regular",                      artist: "Andy Mineo",     videoId: "HGUKWWcrxwE" },
+  { title: "Firm Foundation",              artist: "Lecrae",         videoId: "RG-Zyct3PoI" },
+  { title: "BLOOD 2",                      artist: "KB",             videoId: "1MpQYEGujd0" },
+  { title: "FAVORITE",                     artist: "Jon Keith",      videoId: "tLo3GTeH1eM" },
+  { title: "Hard To Find",                 artist: "Aha Gazelle",    videoId: "JiDVwgYhsKY" },
+  { title: "Game 7",                       artist: "Lecrae",         videoId: "dq7sacUoEsI" },
+  { title: "White Tee",                    artist: "1K Phew",        videoId: "Qy1dsdfVquU" },
+  { title: "... There",                    artist: "Andy Mineo",     videoId: "jhG3rsp9_CI" },
+  { title: "Black Magic",                  artist: "Aha Gazelle",    videoId: "uh4nTFt6K58" },
+  { title: "Living Water",                 artist: "Lecrae",         videoId: "cHc_jf6JzII" },
+  { title: "I Can't Tell",                 artist: "1K Phew",        videoId: "xAcb0y4WYXM" },
+  { title: "CAMPAIGN",                     artist: "KB",             videoId: "UujfTZcydsg" },
+  { title: "Anyway",                       artist: "Aha Gazelle",    videoId: "DOkxe4O8Edo" },
+  { title: "Watch This",                   artist: "Andy Mineo",     videoId: "WqACmCh1AFw" },
+  { title: "ROB HELL (feat. Jon Keith)",   artist: "indie tribe",    videoId: "bZYbnyupT9I" },
+  { title: "Petco",                        artist: "1K Phew",        videoId: "UjTGKDgLlas" },
+  { title: "Still Saucy",                  artist: "Aha Gazelle",    videoId: "0LA5vsT8CTQ" },
+  { title: "Sideways",                     artist: "KB",             videoId: "ZGMGI1itpFo" },
+  { title: "ROOFTOP",                      artist: "Hulvey",         videoId: "aZVGL3tLjtc" },
+  { title: "Keep Your Head Up",            artist: "Jackie Hill Perry", videoId: "O7v_AT7FOzc" },
+  { title: "Morning Sun",                  artist: "Aha Gazelle",    videoId: "QF8lBSvwDQg" },
+  { title: "Forever",                      artist: "Andy Mineo",     videoId: "9jIHABIRpRY" },
+];
+
+(function initNowPlaying() {
+  const widget   = document.getElementById("now-playing-widget");
+  const coverImg = document.getElementById("np-cover");
+  const songEl   = document.getElementById("np-song");
+  const artistEl = document.getElementById("np-artist");
+
+  if (!widget || !coverImg || !songEl || !artistEl) return;
+
+  // Pick a random track from the playlist each visit
+  const track = nowPlayingPlaylist[Math.floor(Math.random() * nowPlayingPlaylist.length)];
+
+  songEl.textContent   = track.title;
+  artistEl.textContent = track.artist;
+  widget.href          = `https://music.youtube.com/watch?v=${track.videoId}`;
+
+  // YouTube's thumbnail endpoint — no API key required
+  coverImg.src = `https://img.youtube.com/vi/${track.videoId}/mqdefault.jpg`;
+  coverImg.alt = `${track.title} by ${track.artist}`;
+})();
+
+
